@@ -1,0 +1,22 @@
+﻿  gui.cpp
+  main.cpp
+C:\Users\shoji\Documents\cheat\cheat\clicker\gui.cpp(71,23): warning C4244: 'return': conversion from 'LRESULT' to 'long', possible loss of data
+C:\Users\shoji\Documents\cheat\cheat\clicker\gui.cpp(81,28): error C2440: '=': cannot convert from 'long (__cdecl *)(HWND,UINT,WPARAM,LPARAM)' to 'WNDPROC'
+  C:\Users\shoji\Documents\cheat\cheat\clicker\gui.cpp(81,28):
+  This conversion requires a reinterpret_cast, a C-style cast or parenthesized function-style cast
+  
+C:\Users\shoji\Documents\cheat\cheat\clicker\gui.cpp(116,2): error C2664: 'BOOL UnregisterClassW(LPCWSTR,HINSTANCE)': cannot convert argument 1 from 'LPCSTR' to 'LPCWSTR'
+  C:\Users\shoji\Documents\cheat\cheat\clicker\gui.cpp(116,29):
+  Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or parenthesized function-style cast
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\winuser.h(4311,1):
+  see declaration of 'UnregisterClassW'
+  C:\Users\shoji\Documents\cheat\cheat\clicker\gui.cpp(116,2):
+  while trying to match the argument list '(LPCSTR, HINSTANCE)'
+  
+  imgui.cpp
+  imgui_demo.cpp
+  imgui_draw.cpp
+  imgui_impl_dx9.cpp
+  imgui_impl_win32.cpp
+  imgui_tables.cpp
+  imgui_widgets.cpp

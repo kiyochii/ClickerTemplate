@@ -1,0 +1,8 @@
+﻿  main.cpp
+C:\Users\shoji\Documents\cheat\cheat\clicker\main.cpp(16,7): warning C4101: 'console': unreferenced local variable
+  Generating code
+  30 of 1676 functions ( 1.8%) were compiled, the rest were copied from previous compilation.
+    1 functions were new in current compilation
+    30 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  cheat.vcxproj -> C:\Users\shoji\Documents\cheat\Release\cheat.exe
