@@ -90,7 +90,8 @@ void gui::CreatHwindow(
 
 	RegisterClassExA(&windowClass);
 
-	window = CreateWindowA(
+	window = CreateWindowExA(
+		WS_EX_LAYERED,
 		className,
 		windowName,
 		WS_POPUP,
@@ -103,6 +104,8 @@ void gui::CreatHwindow(
 		windowClass.hInstance,
 		0
 	);
+
+	SetLayeredWindowAttributes(window, RGB(0, 0, 0), 100,ULW_COLORKEY);
 	ShowWindow(window, SW_SHOWDEFAULT);
 	UpdateWindow(window);
 
@@ -163,20 +166,6 @@ void gui::DestroyDevice() noexcept {
 }
 
 
-void  gui::CreateImGui() noexcept {
-
-	IMGUI_CHECKVERSION();
-	ImGui::CreateContext();
-	ImGuiIO& io = ::ImGui::GetIO();
-
-	io.IniFilename = NULL;
-
-	ImGui::StyleColorsLight();
-	
-	ImGui_ImplWin32_Init(window);
-	ImGui_ImplDX9_Init(device);
-
-}
 
 void gui::DestroyImGui() noexcept {
 
@@ -207,7 +196,7 @@ void gui::EndRender() noexcept {
 	device->SetRenderState(D3DRS_ALPHABLENDENABLE, FALSE);
 	device->SetRenderState(D3DRS_SCISSORTESTENABLE, FALSE);
 
-	device->Clear(0, 0, D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER, D3DCOLOR_RGBA(0, 0, 0, 255), 1.0f, 0);
+
 
 	if (device->BeginScene() >= 0) {
 		ImGui::Render();
@@ -223,20 +212,48 @@ void gui::EndRender() noexcept {
 }
 
 
+void  gui::CreateImGui() noexcept {
+
+	IMGUI_CHECKVERSION();
+	ImGui::CreateContext();
+	ImGuiIO& io = ::ImGui::GetIO();
+	ImGuiStyle& style = ImGui::GetStyle();
+	style.WindowRounding = 10.0f; // Define o nível de arredondamento das bordas (valor em pixels)
+
+	io.IniFilename = NULL;
+	ImGui::StyleColorsDark();
+	ImVec4 backgroundColor = ImVec4(23 / 255.0f, 94 / 255.0f, 120 / 255.0f, 1.0f);
+	style.Colors[ImGuiCol_WindowBg] = backgroundColor;
+
+
+
+
+	ImGui_ImplWin32_Init(window);
+	ImGui_ImplDX9_Init(device);
+
+}
 void gui::Render() noexcept {
 
 	ImGui::SetNextWindowPos({0, 0 });
+
 	ImGui::SetNextWindowSize({ WIDTH, HEIGHT });
 	ImGui::Begin(
-		" ",
+		"x ",
 		&exit,//se falso a janela fecha
 		ImGuiWindowFlags_NoResize|
 		ImGuiWindowFlags_NoSavedSettings|
 		ImGuiWindowFlags_NoCollapse|
 		ImGuiWindowFlags_NoMove	
 	);
-	ImGui::Checkbox("on", &ligar); 
 
+	ImGuiIO& io = ImGui::GetIO();
+	ImFont* font_title = io.Fonts->AddFontFromFileTTF("c:\\Windows\\Fonts\\Roboto-Bold.ttf", 23.0f, NULL, io.Fonts->GetGlyphRangesDefault());
+	IM_ASSERT(title != NULL);
+	ImFont* font_body = io.Fonts->AddFontFromFileTTF("c:\\Windows\\Fonts\\Roboto-Regular.ttf", 18.0f, NULL, io.Fonts->GetGlyphRangesDefault());
+	IM_ASSERT(body != NULL);
+	ImGui::PushFont(font_title);
+	ImGui::Checkbox("on", &ligar); 
+	
 	ImGui::Checkbox("random", &rand);
 	ImGui::Text("It is highly recommended using the random function and the cps\nbellow 14 in servers with anticheat");
 
