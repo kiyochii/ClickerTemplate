@@ -1,6 +1,5 @@
 #include"gui.h"
-#include "aux.h"
-#include"click.h"
+#include"clicker.h"
 #include <thread>
 #include <stdio.h>
 #include<iostream>
@@ -21,36 +20,33 @@ int main(
 	std::cout << "Windows DLL error press any key to close ";
 	std::cin >> confirmar;
 	if (confirmar == "teste") {
-		
+
 		gui::CreatHwindow("winname", "winclassname");
 		gui::CreateDevice();
 		gui::CreateImGui();
 		ui = FindWindowA("winclassname", NULL);
+		Clicker clickerInstance;
+		std::thread clickerThread(&Clicker::thread, &clickerInstance);
+		clickerThread.detach();
+
 		FreeConsole();
-		// Cria uma thread separada para executar clicar_thread
-		
+
 		while (gui::exit) {
 
-
-			
 			gui::BeginRender();
 			gui::Render();
 			gui::EndRender();
-			click::acionar();
-			aux::clicar();
 			if (gui::hiden == true) {
 				ShowWindow(ui, SW_HIDE);
 				Sleep(30);
 			}
-			
-
-
+			Sleep(10);
 		}
 		gui::DestroyImGui();
 		gui::DestroyDevice();
 		gui::DestroyHWindow();
-		
+
+
+		return EXIT_SUCCESS;
 	}
-	
-	return EXIT_SUCCESS;
 }

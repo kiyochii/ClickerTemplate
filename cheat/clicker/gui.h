@@ -30,9 +30,7 @@
 
 
 	//criacao da tela win
-	void CreatHwindow(const char* windowName, 
-		const char* className)
-	noexcept;
+	void CreatHwindow(const char* windowName, const char* className) noexcept;
 	void DestroyHWindow() noexcept;
 
 	//criacao device

@@ -235,7 +235,6 @@ void gui::Render() noexcept {
 		ImGuiWindowFlags_NoCollapse|
 		ImGuiWindowFlags_NoMove	
 	);
-	
 	ImGui::Checkbox("on", &ligar); 
 
 	ImGui::Checkbox("random", &rand);
