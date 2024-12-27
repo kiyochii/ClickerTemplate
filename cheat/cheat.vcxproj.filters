@@ -14,9 +14,10 @@
     <ClInclude Include="imgui\imstb_rectpack.h" />
     <ClInclude Include="imgui\imstb_textedit.h" />
     <ClInclude Include="imgui\imstb_truetype.h" />
-    <ClInclude Include="clicker\gui.h" />
+    <ClInclude Include="UI\gui.h" />
     <ClInclude Include="clicker\aux.h" />
     <ClInclude Include="clicker\clicker.h" />
+    <ClInclude Include="UI\loadui.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="imgui\imgui.cpp" />
@@ -27,7 +28,8 @@
     <ClCompile Include="imgui\imgui_tables.cpp" />
     <ClCompile Include="imgui\imgui_widgets.cpp" />
     <ClCompile Include="clicker\main.cpp" />
-    <ClCompile Include="clicker\gui.cpp" />
+    <ClCompile Include="UI\gui.cpp" />
     <ClCompile Include="clicker\clicker.cpp" />
+    <ClCompile Include="UI\loadui.cpp" />
   </ItemGroup>
 </Project>
