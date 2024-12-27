@@ -1,5 +1,5 @@
 #include "clicker.h"
-#include "gui.h"
+#include "../UI/gui.h"
 #include <cstdio> 
 
 
